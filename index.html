@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TrainSnap</title>
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">iPhone向け電車確認</p>
+        <h1>和泉中央の次の1本を、すぐ見る。</h1>
+        <p class="lede">まずは南海泉北線の和泉中央駅だけに絞って、開いた瞬間に次の電車を表示します。</p>
+      </section>
+
+      <section class="panel setup-panel" id="setupPanel">
+        <div class="panel-header">
+          <h2>駅を1回だけ入力</h2>
+          <p>まずは和泉中央 / 南海泉北線だけを使います。</p>
+        </div>
+
+        <label class="field">
+          <span>駅名</span>
+          <input id="stationInput" type="text" placeholder="例: 和泉中央" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>路線</span>
+          <input id="lineInput" type="text" placeholder="例: 南海泉北線" autocomplete="off" />
+        </label>
+
+        <button id="saveButton" class="primary-button">この駅で使う</button>
+      </section>
+
+      <section class="panel result-panel hidden" id="resultPanel" aria-live="polite">
+        <div class="panel-header compact">
+          <div>
+            <h2 id="stationName">-</h2>
+            <p id="lineName">-</p>
+          </div>
+          <button id="editButton" class="ghost-button">変更</button>
+        </div>
+
+        <div class="departure-card">
+          <p class="label">次の電車</p>
+          <div class="time-row">
+            <span id="nextTime" class="next-time">--:--</span>
+            <span id="delayBadge" class="delay-badge">平常運転</span>
+          </div>
+          <p id="destination" class="destination">行き先: -</p>
+          <p id="metaInfo" class="meta">更新すると最新の表示に切り替わります。</p>
+        </div>
+
+        <div class="train-list">
+          <div class="mini-head">
+            <p>次の3本</p>
+            <button id="refreshButton" class="ghost-button">更新</button>
+          </div>
+          <ul id="upcomingList"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
